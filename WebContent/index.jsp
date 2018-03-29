@@ -12,11 +12,9 @@
 </style>
 </head>
 <body>
-
 	<%
 	response.sendRedirect("list.do");
 	%>
-	
 </body>
 </html>
 
