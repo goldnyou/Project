@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mvc.model.ProjectDao">
+	<resultMap type="Project" id="projectResult">
+		<result property="serialNo" column="serial_no"/>
+		<result property="projectName" column="project_name"/>
+		<result property="projectContent" column="project_content"/>
+		<result property="startDate" column="start_date"/>
+		<result property="endDate" column="end_date"/>
+		<result property="processStatus" column="process_status"/>
+	</resultMap>
+	
+   <insert id="insert" parameterType="Project">
+		insert into project values (#{serialNo},#{projectName},#{projectContent},#{startDate},#{endDate},#{processStatus})
+	</insert>
+	
+	<select id="listAll" resultMap="projectResult">
+		select * from project
+	</select>
+	
+	<select id="selectBySerialNo" parameterType="int" resultMap="projectResult">
+		select * from project where serial_no = #{serialNo}
+	</select>	
+	
+	<update id="update" parameterType="Project">
+		update project set project_name=#{projectName},project_content=#{projectContent}
+			,start_date=#{startDate},end_date=#{endDate},process_status=#{processStatus}		
+		where serial_no=#{serialNo}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+	    delete from project where serial_no=#{serialNo}		
+	</delete>
+
+</mapper>
+
+
+
+
